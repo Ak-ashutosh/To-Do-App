@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">{{ form.instance.pk|yesno:"Edit Task,Add Task" }}</h2>
+
+  <form method="POST">
+    {% csrf_token %}
+
+    <!-- Title -->
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      {{ form.title }}
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      {{ form.description }}
+    </div>
+
+    <!-- Deadline -->
+    <div class="mb-3">
+      <label class="form-label">Deadline</label>
+      {{ form.deadline }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="{% url 'task_list' %}" class="btn btn-secondary">Back</a>
+  </form>
+</div>
+{% endblock %}
